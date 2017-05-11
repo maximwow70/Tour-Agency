@@ -1,0 +1,125 @@
+@font-face{
+    font-family: logo;
+    src: url('/assets/BlackCloud.otf');
+}
+$intro-size: 300px;
+$bg-color: rgba(#EEE, 0.7);
+.intro{
+    z-index: 2;
+    position: relative;
+
+    box-sizing: border-box;
+    width: $intro-size;
+    height: $intro-size;
+    padding: 20px;
+    background-color: $bg-color;
+
+    color: #3A4457;
+
+
+    &-content{
+        position: absolute;
+        width: 100%;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    &-title{
+        margin-bottom: 5px;
+
+        font-family: logo;
+        font-size: 36px;
+        text-transform: uppercase;
+    }
+    &-slogan{
+        margin-bottom: 20px;
+
+        font-size: 18px;
+    }
+    &-btn{
+        padding: 5px 10px;
+        border-radius: 10px;
+        border: 2px solid #3A4457;
+        background-color: #3A4457;
+        outline: none;
+
+        color: #EEE;
+        font-size: 20px;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+
+        &:hover{
+            background-color: inherit;
+            color: #3A4457;
+
+            box-shadow: 0 0 20px rgba(#3A4457, 0.6);
+        }
+    }
+    
+    &:after, &:before{
+        z-index: -1;
+        content: '';
+        position: absolute;
+        top: 50%; left: 50%;
+
+        display: block;
+        box-sizing: border-box;
+        border: 4px solid $bg-color;
+    }
+    &:after{
+        transform: translate(-50%, -50%);
+
+        width: $intro-size + 30px;
+        height: $intro-size + 60px;
+
+        animation: afterIntro 20s ease-in-out infinite;
+    }
+    &:before{
+        transform: translate(-50%, -50%);
+
+        width: $intro-size + 60px;
+        height: $intro-size + 30px;
+
+        animation: beforeIntro 20s ease-in-out infinite;
+    }
+
+    @keyframes afterIntro {
+        0% {
+        }
+        20% {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+        40% {
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+        60% {
+
+        }
+        80% {
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+        100% {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+    }
+    @keyframes beforeIntro {
+        0% {
+        }
+        20% {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+        40% {
+            transform: translate(-50%, -50%) rotate(-180deg);
+        }
+        60% {
+            
+        }
+        80% {
+            transform: translate(-50%, -50%) rotate(-180deg);
+        }
+        100% {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+    }
+}

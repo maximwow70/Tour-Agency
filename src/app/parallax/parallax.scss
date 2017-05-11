@@ -1,0 +1,10 @@
+.parallax{
+    z-index: -1;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: #DCDCDD;
+    //background-image: url('/assets/tour1.jpg');
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}

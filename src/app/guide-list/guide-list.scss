@@ -1,0 +1,25 @@
+.guide_list{
+    color: #333;
+
+    &-title{
+        margin-bottom: 20px;
+
+        font-size: 32px;
+        text-transform: capitalize;
+    }
+    &-tour_guide{
+        margin: 20px 40px;
+        
+        display: inline-block;
+        vertical-align: top;
+        .tour_guide{
+            padding: 0px;
+
+            &-btn{
+                width: auto;
+                padding: 4px 8px;
+                border-radius: 10px;
+            }
+        }
+    }
+}

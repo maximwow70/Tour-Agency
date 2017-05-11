@@ -1,0 +1,105 @@
+.tour{
+    text-align: left;
+    &-title{
+        margin-bottom: 20px;
+
+        font-size: 24px;
+    }
+    &-name{
+        margin-bottom: 20px;
+        font-size: 32px;
+    }
+    &-tour_feature_list{
+        margin-bottom: 40px;    
+
+        padding: 0 150px;
+    }
+    &-type{
+        margin-bottom: 10px;
+        
+        display: inline-block;
+        vertical-align: middle;
+    }
+    &-direction{
+        margin-bottom: 10px;
+        
+        display: inline-block;
+        vertical-align: middle;
+    }
+    &-img, &-photos{
+        margin-bottom: 50px;
+
+        display: block;
+        width: 100%;
+        max-height: 600px;
+    }
+    &-description{
+        margin-bottom: 40px;
+
+        font-size: 18px;
+        text-align: justify;
+    }
+
+    &-info, &-destination_list,
+    &-tour_list, &-order{
+        display: inline-block;
+        vertical-align: top;
+
+        width: 50%;
+    }  
+    &-tour_list{
+    }
+        .destination{
+            margin: 0 auto;
+        }
+    &-info{
+        box-sizing: border-box;
+        padding: 0px 50px;
+
+        text-align: left;
+    }
+    &-tour_map{
+        margin-top: 100px;
+        margin-bottom: 40px;
+
+        height: 400px;
+    }
+    &-order{
+        margin-bottom: 40px;
+
+        box-sizing: border-box;
+        padding: 0px 50px;
+
+        text-align: left;
+    }
+    &-actions{
+        text-align: center;
+    }
+
+    &-btn{
+        margin-top: 75px;
+
+        width: 200px;
+        height: 50px;
+        background-color: #3A4457;
+
+        border-radius: 20px;
+
+        line-height: 50px;
+        color: #C29D73;
+        font-size: 26px;
+        text-transform: uppercase;
+
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover{
+            box-shadow: 0 0 20px #3A4457;
+        }
+        &--close{
+            /*background-color: #ba3229;
+            &:hover{
+                box-shadow: 0 0 20px #ba3229;
+            }*/
+        }
+    }
+}

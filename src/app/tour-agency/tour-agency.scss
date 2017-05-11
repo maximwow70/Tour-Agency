@@ -1,0 +1,26 @@
+.tour_agency{
+    position: relative;
+    min-height: 100vh;
+    font-family: Arial;
+    //color: #EEE;
+
+    &-tour_list{
+        padding: 100px 50px;
+
+        &--user{
+            text-align: center;
+            padding: 100px;
+        }
+        &--manager{
+            padding: 100px;
+        }
+    }
+    &-smart_navigation{
+        z-index: 10;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+
+    }
+}

@@ -1,0 +1,30 @@
+<div class="tour_agency">
+	<div class="tour_agency-parallax">
+		<div class="parallax">
+
+		</div>
+	</div>
+	<div class="tour_agency-smart_navigation">
+		<div class="smart_navigation">
+			<a class="smart_navigation-btn" (click)="toggleNavigation($event)">
+				<div class="bars">
+					<div class="bar"></div>
+					<div class="bar"></div>
+					<div class="bar"></div>
+				</div>
+			</a>
+			<div class="smart_navigation-navigation">
+				<div class="navigation">
+					<a routerLink="/home" routerLinkActive="active" class="navigation-list">Home</a>
+					<a routerLink="/tours" routerLinkActive="active" class="navigation-list">Tour List</a>
+					<a routerLink="/users" routerLinkActive="active" class="navigation-list">My Tours</a>
+					<a routerLink="/guide" routerLinkActive="active" class="navigation-list">Tour Guide</a>
+					<a routerLink="/manager" routerLinkActive="active" class="navigation-list">Tour Manager</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<router-outlet></router-outlet>
+
+</div>

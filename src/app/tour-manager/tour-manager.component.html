@@ -1,0 +1,67 @@
+<div class="tour_manager">
+	<div class="tour_manager-action tour_manager-action--manager_enter" *ngIf="!isManagerEntered">
+		<input type="text" class="tour_manager-select tour_manager-select--manager_name" [(ngModel)]="managerName" placeholder="*name">
+		<input class="tour_manager-select" [(ngModel)]="managerPassword" type="password" placeholder="*password"><!--
+		--><button class="tour_manager-btn"
+			(click)="canManagerEnter && setIsManagerEntered(true) && getToursFromUser({name: userName})"
+			[ngClass]="{'tour_manager-btn--disabled': !canManagerEnter}"
+			[disabled]="!canManagerEnter">go</button>
+	</div>
+	<div class="tour_manager-tour_list">
+		<div class="tour_list tour_list--manager" *ngIf="isManagerEntered">
+			<div class="tour_list-title tour_list-title--manager">
+				Tours
+			</div>
+			<div class="tour_list-users" *ngFor="let userTourList of toursFromAllUsers">
+				<div class="tour_list-tour_card">
+					<div class="tour">
+						<div class="tour-info">
+							<div class="tour_card">
+								<img class="tour_card-img" src="{{userTourList.tour.mainImgUrl}}" alt="">
+								<h2 class="tour_card-name">
+									{{userTourList.tour.name}}
+								</h2>
+								<h3 class="tour_card-type">
+									{{userTourList.tour.type.value}}
+								</h3>
+								<p class="tour_card-direction">
+									{{userTourList.tour.transportation.value}}
+								</p>
+								<button class="tour_card-btn" (click)="viewTour(userTourList.tour)">View Details</button>
+							</div>
+						</div>
+					</div>
+					<div class="tour_list-user" *ngFor="let user of userTourList.users">
+						<div class="user">
+							<h3 class="user-name user-name--for_manager">{{user.user.name}}</h3>
+							<div class="user-ticket_list">
+								<div class="ticket_list">
+									<div class="ticket_list-title ticket_list-title--user">
+										His / Her tickets
+									</div>
+									<div class="ticket_list-ticket" *ngFor="let ticket of user.tickets">
+										<div class="ticket">
+											<h3 class="ticket-name">
+												{{ticket.name}}
+											</h3>
+											<h4 class="ticket-type">
+												{{ticket.type}}
+											</h4>
+											<h3 class="ticket-cost">
+												{{ticket.cost}} $
+											</h3>
+										</div>
+									</div>
+									<h3 class="ticket_list-title ticket_list-title--cost">
+										Total cost: {{user.totalCost}} $
+									</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button class="tour_manager-btn tour_manager-btn--close" (click)="setIsManagerEntered(false)" *ngIf="isManagerEntered">close</button>
+	</div>
+</div>

@@ -1,0 +1,20 @@
+<div class="tour_detail_list">
+	<h3 class="tour_detail_list-title">
+		{{tourName}} details:
+	</h3>
+	<div class="tour_detail_list-detail" *ngFor="let detail of detailList; let i = index">
+		<div class="tour_detail_list-btn" (click)="onViewDetail(i)">
+			<div class="tour_detail_list-detail_number">
+				<div class="detail_number">
+					{{i+1}}
+				</div>
+			</div>
+			<h3 class="tour_detail_list-name">
+				{{detail.name}}
+			</h3>
+		</div>
+		<h3 class="tour_detail_list-value">
+			{{detail.value}}
+		</h3>
+	</div>
+</div>

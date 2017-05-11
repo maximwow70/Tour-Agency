@@ -1,0 +1,61 @@
+.order{
+    max-width: 500px;
+    &-title{
+        margin-bottom: 20px;
+
+        font-size: 32px;
+    }
+    &-ticket_list{
+        margin-bottom: 20px;
+    }
+    &-select{
+        box-sizing: border-box;
+        width: 100%;
+        padding: 4px 0px;
+        border-bottom: 2px solid #3A4457;
+        background-color: inherit;
+        outline: none;
+
+        font-size: 20px;
+
+        transition: 0.3s;
+
+        &:not(:last-child){
+            margin-bottom: 20px;
+        }
+        &:focus{
+            border-color: #ba3229;
+        }
+    }
+    &-btn{
+        width: 200px;
+        height: 50px;
+        background-color: #3A4457;
+        outline: none;
+
+        border-radius: 20px;
+
+        line-height: 50px;
+        color: #FFF;
+        font-size: 26px;
+        text-transform: uppercase;
+
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover{
+            box-shadow: 0 0 20px #3A4457;
+        }
+        &--close{
+            background-color: #ba3229;
+            &:hover{
+                box-shadow: 0 0 20px #ba3229;
+            }
+        }
+        &--disabled{
+            background-color:  #ba3229;
+            &:hover{
+                box-shadow: 0 0 20px #ba3229;
+            }
+        }
+    }
+}

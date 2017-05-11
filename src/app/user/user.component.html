@@ -1,0 +1,61 @@
+<div class="user">
+	<div class="user-tour_list">
+		<div class="user-action" *ngIf="!isUserEntered">
+			<input class="user-select" [(ngModel)]="userName" type="text" placeholder="*name"><!--
+			--><button class="user-btn"
+				(click)="canUserEnter && setIsUserEntered(true) && setToursFromUser({name: userName})"
+				[disabled]="!canUserEnter"
+				[ngClass]="{'user-btn--disabled': !canUserEnter}">
+				go
+			</button>
+		</div>
+		<div class="tour_list tour_list--user" *ngIf="isUserEntered">
+			<div class="tour_list-title tour_list-title--user">
+				{{userName}} Tours
+			</div>
+			<div class="tour_list-tour" *ngFor="let userTour of userTours">
+				<div class="tour">
+					<div class="tour-tour_card">
+						<div class="tour_card">
+							<img class="tour_card-img" src="{{userTour.tour.mainImgUrl}}" alt="">
+							<h2 class="tour_card-name">
+								{{userTour.tour.name}}
+							</h2>
+							<h3 class="tour_card-type">
+								{{userTour.tour.type.value}}
+							</h3>
+							<p class="tour_card-direction">
+								{{userTour.tour.transportation.value}}
+							</p>
+							<button class="tour_card-btn" (click)="viewTour(userTour.tour)">View Details</button>
+						</div>
+					</div>
+					<div class="tour-ticket_list">
+						<div class="ticket_list">
+							<div class="ticket_list-title ticket_list-title--user">
+								Tickets for this tour
+							</div>
+							<div class="ticket_list-ticket" *ngFor="let ticket of userTour.tickets">
+								<div class="ticket">
+									<h3 class="ticket-name">
+										{{ticket.name}}
+									</h3>
+									<h4 class="ticket-type">
+										{{ticket.type}}
+									</h4>
+									<h3 class="ticket-cost">
+										{{ticket.cost}} $
+									</h3>
+								</div>
+							</div>
+							<h3 class="ticket_list-title ticket_list-title--cost">
+								Total cost: {{userTour.totalCost}} $
+							</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<button class="user-btn user-btn--close" (click)="setIsUserEntered(false) && userTours=null" *ngIf="isUserEntered">close</button>
+</div>

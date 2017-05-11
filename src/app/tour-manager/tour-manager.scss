@@ -1,0 +1,87 @@
+.tour_manager{
+
+    font-family: Arial;
+    &-tour_list{
+        padding: 100px 50px;
+        .user{
+            padding: 0;
+        }
+    }
+
+    &-action{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        &--manager_enter{
+            max-width: 200px;
+            .tour_manager-select:not(:last-of-type){
+                margin-bottom: 20px;
+            }
+        }
+    }
+    &-select, &-btn{
+        display: inline-block;
+        vertical-align: middle;
+
+        box-sizing: border-box;
+        height: 40px;
+        border: 2px solid #3A4457;
+        background-color: inherit;
+        outline: none;
+
+    }
+    &-select{
+        width: 140px;  
+        padding: 0px 8px;
+
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+        border-right: none;
+
+        color: #3A4457;
+        font-size: 24px;
+
+        &--manager_name{
+            width: 180px;
+            border: 2px solid #3A4457;
+            border-radius: 10px;
+        }
+    }
+    &-btn{
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+
+        width: 40px;
+        height: 40px;
+        border: none;
+        background-color: #3A4457;
+
+        color: #C29D73;
+        font-size: 20px;
+
+        cursor: pointer;
+
+        &--close{
+            width: 200px;
+            height: 50px;
+            background-color: #3A4457;
+
+            border-radius: 20px;
+
+            line-height: 50px;
+            color: #C29D73;
+            font-size: 26px;
+            text-transform: uppercase;
+
+            transition: 0.3s;
+            &:hover{
+                box-shadow: 0 0 20px #3A4457;
+            }
+        }
+        &--disabled{
+            background-color:  #ba3229;
+            color: #EEE;
+        }
+    }
+}

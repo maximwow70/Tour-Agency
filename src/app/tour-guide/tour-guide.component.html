@@ -1,0 +1,94 @@
+<div class="tour_guide">
+	<div class="tour_guide-action" *ngIf="!isGuideEntered">
+		<input type="text" class="tour_guide-select tour_guide-select--guide_mail" [(ngModel)]="guideMail" placeholder="*mail">
+		<input class="tour_guide-select" [(ngModel)]="guidePassword" type="password" placeholder="*password"><!--
+		--><button class="tour_guide-btn"
+			(click)="canGuideEnter && setIsGuideEntered(true)"
+			[ngClass]="{'tour_guide-btn--disabled': !canGuideEnter}"
+			[disabled]="!canGuideEnter">go</button>
+	</div>
+	<div class="tour_guide-tour" *ngIf="isGuideEntered">
+		<div class="tour">
+			<div class="tour-info">
+				<h2 class="tour-name">
+					{{tour.name}}
+				</h2>
+				<h3 class="tour-type">
+					{{tour.type.value}}
+				</h3>
+				<h3 class="tour-direction">
+					/ {{tour.transportation.value}}
+				</h3>
+				<img src="{{tour.mainImgUrl}}" alt="" class="tour-img">
+				<div class="tour-description">
+					{{tour.description}}
+				</div> 
+				<div class="tour-tour_map">
+					<app-tour-map [destinations]="tour.destinations"></app-tour-map>
+				</div>
+			</div><!--
+			--><div class="tour-destination_list">
+				<div class="destination_list">
+					<h2 class="destination_list-title">
+						Destinations
+					</h2>
+					<div class="destination_list-destination" *ngFor="let destination of tour.destinations; let i = index">
+						<div class="destination_list-line"></div>
+						<button class="destination_list-btn destination_list-btn--remove_destination" (click)="removeDestinationByIndex(i)">
+							<span class="fa fa-close"></span>
+						</button>
+						<div class="destination" (click)="onDestinationClicked($event)">
+							<div class="destination-photos" [ngStyle]="{
+								'background-image': 'url(..' + tour.allImgUrl[i] + ')'
+							}">
+								<div class="filter"></div>
+							</div>
+							<div class="destination-info">
+								<h3 class="destination-name">
+									{{destination.name}}
+								</h3>
+								<h4 class="destination-day">
+									day {{i + 1}}
+								</h4>
+							</div>
+							<div class="destination-hotel">
+								<div class="hotel">
+									<h3 class="hotel-name">
+										{{destination.hotel.name}}
+									</h3>
+									<div class="hotel-stars">
+										<img src="/assets/star3.svg" class="star" *ngFor="let star of getHotelStars(destination.hotel)">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="destination_list-action destination_list-action--add_destination">
+						<input 
+							class="destination_list-select destination_list-select--coords" 
+							[(ngModel)]="newDestination._place._latitude"
+							placeholder="latitude">
+						<input 
+							class="destination_list-select destination_list-select--coords" 
+							[(ngModel)]="newDestination._place._longitude"
+							placeholder="longitude">
+						<input 
+							class="destination_list-select destination_list-select--name" 
+							[(ngModel)]="newDestination._name"
+							placeholder="name">
+						<input 
+							class="destination_list-select destination_list-select--hotel"
+							[(ngModel)]="newDestination._hotel._name"
+							placeholder="hotel name">
+						<input
+							class="destination_list-select destination_list-select--stars" 
+							min="0" max="5" type="number" placeholder="hotel stars"
+							[(ngModel)]="newDestination._hotel._stars">
+						<button class="destination_list-btn" (click)="addDestination()">Add</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<button *ngIf="isGuideEntered" class="tour_guide-btn tour_guide-btn--close" (click)="setIsGuideEntered(false)">close</button>
+</div>

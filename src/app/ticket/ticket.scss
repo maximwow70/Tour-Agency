@@ -1,0 +1,39 @@
+$light-color: #C29D73;
+$blue-color: #3A4457;
+.ticket{
+    box-sizing: border-box;
+    width: 100px;
+    padding: 20px 10px;
+    border-radius: 20px;
+    border: 3px solid $blue-color;
+
+    background-color: $blue-color;
+
+    color: $light-color;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+    &:hover{
+        border-color: #ba3229;
+    }
+    &--selected{
+        border-color: #ba3229;
+    }
+    
+    &-name{
+        margin-bottom: 10px;
+
+        font-size: 20px;
+    }
+    &-type{
+        margin-bottom: 30px;
+
+        text-transform: capitalize;
+    }
+    &-cost{
+        font-size: 18px;
+    }
+
+}

@@ -1,0 +1,10 @@
+.tour_map{
+    height: 100%; 
+    .sebm-google-map-container{
+        height: 100%;
+    }
+} 
+.gm-style-cc, .gm-svpc, .gmnoprint, a img[draggable=false],
+.gmnoprint{
+    display: none !important;
+}

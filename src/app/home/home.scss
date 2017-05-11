@@ -1,0 +1,64 @@
+.home{
+    color: #EEE;
+    text-align: center;
+
+    &-intro{
+        position: relative;
+        min-height: 100vh;
+
+        background-image: url('/assets/travel1.jpg');
+        background-position: center;
+        background-size: 100% 120%;
+        .intro{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    &-scroller{
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        .scroller{
+            position: relative;
+            width: 26px;
+            height: 40px;
+            border-radius: 10px;
+            
+            background-color: rgba(#EEE, 0.7);
+            box-shadow: 0 0 10px rgba(#EEE, 0.4);
+            &:after{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+
+                width: 6px;
+                height: 10px;
+                border-radius: 10px;
+                background-color: #3A4457;
+
+                animation: scrollerPoint 1.2s ease-out infinite;
+            }
+            @keyframes scrollerPoint {
+                0% {
+                    top: 10%;
+                }
+                80% {
+                    opacity: 1;
+                }
+                100% {
+                    top: 55%;
+                    opacity: 0;
+                }
+            }
+        }
+    }
+    &-guide_list{
+        padding: 50px;
+    }
+    
+}

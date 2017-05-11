@@ -1,0 +1,94 @@
+.tour_list-container{
+    padding: 50px 0px;
+    //background-color: rgba(#C29D73, 0.6);
+    &-tour{
+        .tour{
+            &-name{
+                text-align: center;
+            }
+        }
+    }
+}
+.tour_list{
+    text-align: center;
+    &-title{
+        margin-bottom: 50px;
+
+        //font-family: logo;
+        font-size: 32px;
+        font-weight: normal;
+
+        &--tickets{
+            margin-bottom: 0;
+
+            font-size: 24px;
+        }
+        &--cost{
+            font-size: 20px;
+        }
+        &--ordered_tickets{
+            margin-bottom: 20px;
+        }
+    }
+    &-tour_card{
+        margin: 0 20px 20px 20px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    &--user{
+        .tour_list-ticket_list{
+            max-width: 700px;
+            .ticket_list{
+                &-ticket{
+                    margin: 0 20px 20px 20px;
+                    display: inline-block;
+                    vertical-align: top;
+                    cursor: default;
+                    &:hover{
+                        border-color: #3A4457;
+                    }
+                }
+            }
+
+        }
+    }
+    &--manager{
+        text-align: left;
+        .tour{
+            margin-bottom: 50px;
+        }
+        .tour_list-title{
+            margin-top: 0px;
+            margin-bottom: 10px;
+            text-align: left;
+            &--cost{
+                margin-bottom: 0px;
+            }
+            &--manager{
+                margin-bottom: 50px;
+                text-align: center;
+            }
+        }
+        .tour_list-tour_card{
+            margin: 0px;
+        }
+        .tour_list-users{
+            display: block;
+            &:not(:first-of-type){
+                margin-top: 25px;
+            }
+        }
+        .tour-card{
+            display: inline-block;
+            vertical-align: top;
+        }
+        .tour_list-user{
+            margin-bottom: 25px;
+            margin-bottom: 50px;
+        }
+        .tour_list-tickets{
+            text-align: left;
+        }
+    }
+}

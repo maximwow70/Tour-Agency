@@ -1,0 +1,39 @@
+<div class="order">
+    <h2 class="order-title">
+      Order this tour ( {{ticketCount}} / {{maxTicketCount}} )
+    </h2>
+    <div class="order-ticket_list" *ngIf="(ticketCount < maxTicketCount)">
+      <div class="ticket_list">
+        <h2 class="ticket_list-title">
+          Tickets:
+        </h2>
+        <div class="ticket_list-ticket"  *ngFor="let ticket of tickets">
+          <div class="ticket" (click)="selectTicket(ticket)" [ngClass]="{'ticket--selected': isActiveTicket(ticket)}">
+            <h3 class="ticket-name">
+              {{ticket.name}}
+            </h3>
+            <h4 class="ticket-type">
+              {{ticket.type}}
+            </h4>
+            <h3 class="ticket-cost">
+              {{ticket.cost}} $
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="order-actions" *ngIf="(ticketCount < maxTicketCount)">
+      <input [(ngModel)]="userName" class="order-select" type="text" placeholder="*name">
+      <input [(ngModel)]="userMail" class="order-select" type="mail" placeholder="*mail">
+      <button 
+        (click)="orderTourToUser($event)"
+        class="order-btn order-btn--order"
+        [ngClass]="{'order-btn--disabled': !isCanOrder}"
+        [disabled]="!isCanOrder">
+        Order
+      </button>
+    </div>
+
+    <h2 class="order-title" *ngIf="!(ticketCount < maxTicketCount)">There is no tickets</h2>
+
+  </div>

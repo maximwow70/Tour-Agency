@@ -1,0 +1,18 @@
+.hotel{
+    &-name{
+        margin-bottom: 10px;
+    }
+    &-stars{
+        .star{
+            margin: 0 5px;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            //background-color: #3A4457;
+
+            //color: #C29D73;
+        }
+
+    }
+}

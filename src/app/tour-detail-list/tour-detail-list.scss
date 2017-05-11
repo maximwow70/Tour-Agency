@@ -1,0 +1,100 @@
+.tour_detail_list{
+    text-align: justify;
+    
+    &-title{
+        margin-bottom: 20px;
+
+        font-size: 26px;
+    }
+    &-detail{
+        position: relative;
+
+        display: inline-block;
+        vertical-align: middle;
+
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #3A4457;
+        
+        color: #C29D73;
+
+        max-height: 60px;
+        overflow: hidden;
+        transition: 0.3s;
+        &:not(:last-of-type){
+            margin-bottom: 10px;
+        }
+        &:hover {
+            
+        }
+        &--active{
+            max-height: 400px;
+            .tour_detail_list-btn{
+                .tour_detail_list-detail_number{
+                    box-shadow: 0 0 20px rgba(#C29D73, 0.7);
+                }
+                .tour_detail_list-name{
+                    text-shadow: 0 0 20px rgba(#C29D73, 0.7);
+                }
+            }
+        }
+    }
+    &-btn{
+        cursor: pointer;
+
+        transition: 0.3s;
+        &:hover{
+            .tour_detail_list-detail_number{
+                box-shadow: 0 0 20px rgba(#C29D73, 0.7);
+            }
+            .tour_detail_list-name{
+                text-shadow: 0 0 20px rgba(#C29D73, 0.7);
+            }
+        }
+    }
+    &-detail_number{
+        display: inline-block;
+        vertical-align: middle;
+
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        background-color: #C29D73;
+
+        color: #3A4457;
+        font-size: 24px;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+        &:hover{
+            box-shadow: 0 0 20px rgba(#C29D73, 0.7);
+        }
+        .detail_number{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            height: 100%;
+        }
+    }
+    &-name{
+        margin-left: 10px;
+
+        display: inline;
+        vertical-align: middle;
+        text-transform: capitalize;
+        
+        transition: 0.3s;
+    }
+    &-value{
+        margin-top: 10px;
+
+        padding: 0 10px;
+
+        font-weight: normal;
+    }
+}

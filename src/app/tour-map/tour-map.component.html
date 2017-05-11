@@ -1,0 +1,20 @@
+<div class="tour_map">
+	<sebm-google-map [latitude]="mainDestinationPlace.coords.lat" [longitude]="mainDestinationPlace.coords.lng"
+	 [zoom]="map.zoom" [disableDoubleClickZoom]="true" [scrollwheel]="false" [styles]="map.styles">
+
+		<sebm-google-map-marker
+			*ngFor="let destination of destinations"
+			[latitude]="destination.place.coords.lat"
+			[longitude]="destination.place.coords.lng"
+		 	[label]=""
+			[title]="destination.name"
+			[iconUrl]="map.marker.icon">
+		</sebm-google-map-marker>
+
+		<sebm-google-map-polyline [strokeWeight]="map.polylineStyles.weight" [strokeColor]="map.polylineStyles.color">
+			<sebm-google-map-polyline-point *ngFor="let destination of destinations" [latitude]="destination.place.coords.lat" [longitude]="destination.place.coords.lng">
+			</sebm-google-map-polyline-point>
+		</sebm-google-map-polyline>
+
+	</sebm-google-map>
+</div>

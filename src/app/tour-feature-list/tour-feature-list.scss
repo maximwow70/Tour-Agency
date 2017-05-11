@@ -1,0 +1,19 @@
+.tour_feature_list{
+    text-align: center;
+    &-title{
+        margin-bottom: 20px;
+        
+        font-size: 24px;
+        text-transform: capitalize;
+    }
+    &-tour_feature{
+        width: 250px;
+
+        display: inline-block;
+        vertical-align: top;
+
+        box-sizing: border-box;
+        padding: 20px;
+        border-right: none;
+    }
+}

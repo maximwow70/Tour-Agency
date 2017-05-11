@@ -1,0 +1,34 @@
+<div class="home">
+	<div class="home-intro">
+		<div class="intro">
+			<div class="intro-content">
+				<div class="intro-title">
+					Tour-app
+				</div>
+				<div class="intro-slogan">
+					Discover the world with us
+				</div>
+				<button class="intro-btn" (click)="seeTours()">Let's go</button>
+			</div>
+		</div>
+		<div class="home-scroller">
+			<div class="scroller"></div>
+		</div>
+	</div>
+	<div class="home-guide_list">
+		<div class="guide_list">
+			<div class="guide_list-title">
+				Our Guides
+			</div>
+			<div class="guide_list-tour_guide" *ngFor="let guide of tourGuides">
+				<div class="tour_guide">
+					<img src="{{guide.photoUrl}}" alt="" class="tour_guide-photo">
+					<div class="tour_guide-name">
+						{{guide.name}}
+					</div>
+					<button class="tour_guide-btn" (click)="viewTour(getTourByGuide(guide))">{{getTourByGuide(guide).name}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

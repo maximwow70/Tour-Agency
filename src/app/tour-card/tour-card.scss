@@ -1,0 +1,52 @@
+.tour_card{
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    width: 250px;
+    //background-color: rgba(#3A4457, 1);
+
+    color: #3A4457;
+    text-align: left;
+
+
+    &-img{
+        margin-bottom: 20px;
+
+        display: block;
+        width: 100%;
+        height: 150px;
+    }
+    &-name{
+        margin-bottom: 10px;
+        font-size: 32px;
+
+    }
+    &-type{
+        margin-bottom: 10px;
+
+        font-size: 16px;
+    }
+    &-direction{
+        margin-bottom: 20px;
+
+        font-size: 18px;
+    }
+
+    &-btn{
+        width: 100%;
+        background-color: #3A4457;
+        outline: none;
+
+        line-height: 2;
+        color: #C29D73;
+        font-size: 24px;
+        cursor: pointer;
+
+        transition: 0.3s;
+        &:hover{
+            box-shadow: 0 0 20px rgba(#3A4457, 0.5);
+        }
+
+    }
+
+}

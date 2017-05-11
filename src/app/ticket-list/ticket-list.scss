@@ -1,0 +1,29 @@
+.ticket_list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    &-title{
+        flex: 1;
+        width: 100%;
+        flex-basis: 100%;
+        
+        margin-bottom: 20px;
+        &--user{
+            margin-bottom: 20px;
+
+            font-size: 24px;
+        }
+        &--cost{
+            margin-bottom: 0px;
+            font-size: 20px;
+        }
+    }
+    &-ticket{
+        margin-bottom: 20px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}

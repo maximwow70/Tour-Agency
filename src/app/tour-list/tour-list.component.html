@@ -1,0 +1,182 @@
+<div class="tour_list-container">
+	<div class="tour_list-container-tour_list" *ngIf="!activeTour">
+		<div class="tour_list">
+			<div class="tour_list-title">
+				Our Tours
+			</div>
+			<div class="tour_list-tour_card" *ngFor="let tour of tourList">
+				<div class="tour_card">
+					<img class="tour_card-img" src="{{tour.mainImgUrl}}" alt="">
+					<h2 class="tour_card-name">
+						{{tour.name}}
+					</h2>
+					<h3 class="tour_card-type">
+						{{tour.type.value}}
+					</h3>
+					<p class="tour_card-direction">
+						{{tour.transportation.value}}
+					</p>
+					<button class="tour_card-btn" (click)="viewTour(tour)">View Details</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tour_list-container-tour" *ngIf="activeTour">
+		<div class="tour">
+			<h2 class="tour-name">
+				{{tour.name}}
+			</h2>
+			<div class="tour-tour_feature_list">
+				<div class="tour_feature_list">
+					<div class="tour_feature_list-tour_feature">
+						<div class="tour_feature">
+							<img src="{{tour.type.imgUrl}}" alt="" class="tour_feature-img">
+							<h4 class="tour_feature-name">
+								Tour type
+							</h4>
+							<h3 class="tour_feature-value">
+								{{tour.type.value}}
+							</h3>
+						</div>
+					</div><!--
+					--><div class="tour_feature_list-tour_feature">
+						<div class="tour_feature">
+							<img src="{{tour.transportation.imgUrl}}" alt="" class="tour_feature-img">
+							<h4 class="tour_feature-name">
+								Transportation
+							</h4>
+							<h3 class="tour_feature-value">
+								{{tour.transportation.value}}
+							</h3>
+						</div>
+					</div><!--
+					--><div class="tour_feature_list-tour_feature">
+						<div class="tour_feature">
+							<img src="assets/tour/travel.svg" alt="" class="tour_feature-img">
+							<h4 class="tour_feature-name">
+								Departure city
+							</h4>
+							<h3 class="tour_feature-value">
+								{{tour.departureCity}}
+							</h3>
+						</div>
+					</div><!--
+					--><div class="tour_feature_list-tour_feature">
+						<div class="tour_feature">
+							<img src="assets/tour/time.svg" alt="" class="tour_feature-img">
+							<h4 class="tour_feature-name">
+								Duration
+							</h4>
+							<h3 class="tour_feature-value">
+								{{tour.days}} days / {{tour.nights}} nights
+							</h3>
+						</div>
+					</div><!--
+					--><div class="tour_feature_list-tour_feature">
+						<div class="tour_feature">
+							<img src="assets/tour/waiting-room.svg" alt="" class="tour_feature-img">
+							<h4 class="tour_feature-name">
+								Group Size
+							</h4>
+							<h3 class="tour_feature-value">
+								{{getTicketCountForTour(activeTour)}}
+							</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tour-info">
+				<img src="{{tour.mainImgUrl}}" alt="" class="tour-img">
+				<!--<div class="tour-photos">
+					<app-photos [urls]="tour.allImgUrl"></app-photos>
+				</div>-->
+				<h3 class="tour-title">
+					{{tour.name}} overview:
+				</h3>
+				<p class="tour-description">
+					{{tour.description}}
+				</p>
+				<div class="tour-tour_details">
+					<app-tour-detail-list 
+						[tourName]="tour.name"
+						[detailList]="tour.details">
+					</app-tour-detail-list>
+				</div>
+			</div><!--
+			--><div class="tour-destination_list">
+				<div class="destination_list">
+					<h2 class="destination_list-title">
+						Destinations
+					</h2>
+					<div class="destination_list-destination" *ngFor="let destination of tour.destinations; let i = index">
+						<div class="destination_list-line"></div>
+						<div class="destination" (click)="onDestinationClicked($event)">
+							<div class="destination-photos" [ngStyle]="{
+								'background-image': 'url(..' + tour.allImgUrl[i] + ')'
+							}">
+								<div class="filter"></div>
+							</div>
+							<div class="destination-info">
+								<h3 class="destination-name">
+									{{destination.name}}
+								</h3>
+								<h4 class="destination-day">
+									day {{i + 1}}
+								</h4>
+							</div>
+							<div class="destination-hotel">
+								<div class="hotel">
+									<h3 class="hotel-name">
+										{{destination.hotel.name}}
+									</h3>
+									<div class="hotel-stars">
+										<img src="/assets/star3.svg" class="star" *ngFor="let star of getHotelStars(destination.hotel)">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tour-tour_map">
+				<app-tour-map [destinations]="activeTour.destinations"></app-tour-map>
+			</div>
+			<div class="tour-order">
+				<app-order [userName]="userName" [userMail]="userMail" [maxTicketCount]="getTicketCountForTour(activeTour)" [ticketCount]="getOrderedCountTickets(activeTour)"
+				 [tickets]="tickets" (onUserName)="orderTourToUser($event)">
+				</app-order>
+			</div><!--
+			--><div class="tour-tour_list">
+				<div class="tour_list tour_list--user">
+					<div class="tour_list-title tour_list-title--ordered_tickets">
+						Your Tickets
+					</div>
+					<div class="tour_list-tour_card" *ngFor="let userTour of userTours">
+						<div class="tour_list-ticket_list">
+							<div class="ticket_list-title ticket_list-title--user">
+								Tickets for {{userTour.tour.name}}
+							</div>
+							<div class="ticket_list-ticket" *ngFor="let ticket of userTour.tickets">
+								<div class="ticket">
+									<h3 class="ticket-name">
+										{{ticket.name}}
+									</h3>
+									<h4 class="ticket-type">
+										{{ticket.type}}
+									</h4>
+									<h3 class="ticket-cost">
+										{{ticket.cost}} $
+									</h3>
+								</div>
+							</div>
+							<h3 class="ticket_list-title ticket_list-title--cost">{{userTour.totalCost}} $</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tour-actions">
+				<button class="tour-btn tour-btn--close" (click)="viewTour(null)">close</button>
+			</div>
+		</div>
+	</div>
+</div>
