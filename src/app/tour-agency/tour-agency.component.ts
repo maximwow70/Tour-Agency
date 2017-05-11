@@ -78,6 +78,47 @@ export class TourAgencyComponent implements OnInit {
 		
 		this._tourManager.addTicketCountForTour(berlin, 8);
 
+		let newYork = _tours.NewYork;
+		let maxGuide = new TourGuide('Max');
+		maxGuide.setPhotoUrl('/assets/guides/man.svg');
+		this._tourBook.addTour(newYork, maxGuide);
+
+		this._guideAutorizations.addAutorizationToGuide(maxGuide, 'max@gmail.com', 'max');
+
+		this._tourManager.addTicketForTour(newYork, new Ticket(newYork.name, 'child', 450));
+		this._tourManager.addTicketForTour(newYork, new Ticket(newYork.name, 'adult', 477));
+		this._tourManager.addTicketForTour(newYork, new Ticket(newYork.name, 'for poor', 100));
+		this._tourManager.addTicketForTour(newYork, new Ticket(newYork.name, 'famous', 500));
+		
+		this._tourManager.addTicketCountForTour(newYork, 20);
+
+		let seoul = _tours.Seoul;
+		let melissaGuide = new TourGuide('Melissa');
+		melissaGuide.setPhotoUrl('/assets/guides/man.svg');
+		this._tourBook.addTour(seoul, melissaGuide);
+
+		this._guideAutorizations.addAutorizationToGuide(melissaGuide, 'melissa@gmail.com', 'melissa');
+
+		this._tourManager.addTicketForTour(seoul, new Ticket(seoul.name, 'child', 1500));
+		this._tourManager.addTicketForTour(seoul, new Ticket(seoul.name, 'adult', 1600));
+		this._tourManager.addTicketForTour(seoul, new Ticket(seoul.name, 'for poor', 1200));
+		this._tourManager.addTicketForTour(seoul, new Ticket(seoul.name, 'famous', 3000));
+		
+		this._tourManager.addTicketCountForTour(seoul, 20);
+
+		let norway = _tours.Norway;
+		let IgorGuide = new TourGuide('Igor');
+		IgorGuide.setPhotoUrl('/assets/guides/man.svg');
+		this._tourBook.addTour(norway, IgorGuide);
+
+		this._guideAutorizations.addAutorizationToGuide(IgorGuide, 'igor@gmail.com', 'igor');
+
+		this._tourManager.addTicketForTour(norway, new Ticket(norway.name, 'child', 150));
+		this._tourManager.addTicketForTour(norway, new Ticket(norway.name, 'adult', 160));
+		this._tourManager.addTicketForTour(norway, new Ticket(norway.name, 'famous', 200));
+		
+		this._tourManager.addTicketCountForTour(norway, 32);
+	
 	}
 	ngOnInit() {
 	}

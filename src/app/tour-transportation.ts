@@ -35,7 +35,7 @@ export function getTourTransportation(transportation: TourTransportation): { val
         }
         case TourTransportation.FOOT: {
             return {
-                value: 'Plane',
+                value: 'Foot',
                 imgUrl: '/assets/tour-transportation/foot.svg'
             }
         }

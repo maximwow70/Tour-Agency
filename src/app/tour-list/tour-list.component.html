@@ -4,6 +4,22 @@
 			<div class="tour_list-title">
 				Our Tours
 			</div>
+			<div class="tour_list-toolbar">
+				<div class="toolbar toolbar--horizontal">
+					<button class="toolbar-btn toolbar-btn--sort" (click)="sortToursByNameIncrease($event)">
+						name <span class="fa fa-arrow-up"></span>
+					</button>
+					<button class="toolbar-btn toolbar-btn--sort" (click)="sortToursByNameDecrease($event)">
+						name <span class="fa fa-arrow-down"></span>
+					</button>
+					<button class="toolbar-btn toolbar-btn--sort" (click)="sortToursByCostIncrease($event)">
+						cost <span class="fa fa-arrow-up"></span>
+					</button>
+					<button class="toolbar-btn toolbar-btn--sort" (click)="sortToursByCostDecrease($event)">
+						cost <span class="fa fa-arrow-down"></span>
+					</button>
+				</div>
+			</div>
 			<div class="tour_list-tour_card" *ngFor="let tour of tourList">
 				<div class="tour_card">
 					<img class="tour_card-img" src="{{tour.mainImgUrl}}" alt="">
@@ -14,7 +30,7 @@
 						{{tour.type.value}}
 					</h3>
 					<p class="tour_card-direction">
-						{{tour.transportation.value}}
+						{{getCostRangeForTour(tour)}}
 					</p>
 					<button class="tour_card-btn" (click)="viewTour(tour)">View Details</button>
 				</div>

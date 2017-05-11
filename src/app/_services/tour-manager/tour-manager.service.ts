@@ -144,4 +144,28 @@ export class TourManagerService {
         return countTickets;
     }
 
+    public getMinCostForTour(tour: Tour): number {
+        let tickets = this.getTicketsFromTour(tour);
+        let min = tickets[0].cost;
+        for (let i = 0; i < tickets.length; i++){
+            if (tickets[i].cost < min){
+                min = tickets[i].cost;
+            }
+        }
+        return min;
+    }
+    public getMaxCostForTour(tour: Tour): number {
+        let tickets = this.getTicketsFromTour(tour);
+        let max = tickets[0].cost;
+        for (let i = 0; i < tickets.length; i++){
+            if (tickets[i].cost > max){
+                max = tickets[i].cost;
+            }
+        }
+        return max;
+    }
+    public getCostRangeForTour(tour: Tour): string {
+        return this.getMinCostForTour(tour) + '$ ' + ' - ' + this.getMaxCostForTour(tour) + '$';
+    }
+
 }

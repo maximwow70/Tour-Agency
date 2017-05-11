@@ -12,7 +12,7 @@
 .tour_list{
     text-align: center;
     &-title{
-        margin-bottom: 50px;
+        margin-bottom: 30px;
 
         //font-family: logo;
         font-size: 32px;
@@ -30,8 +30,15 @@
             margin-bottom: 20px;
         }
     }
+    &-toolbar{
+        margin: 0 auto;
+        margin-bottom: 30px;
+
+        max-width: 600px;
+        padding: 0 100px;
+    }
     &-tour_card{
-        margin: 0 20px 20px 20px;
+        margin: 0 20px 40px 20px;
         display: inline-block;
         vertical-align: top;
     }

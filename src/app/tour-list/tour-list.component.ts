@@ -24,7 +24,8 @@ import { TourBookService } from "app/_services/tour-book/tour-book.service";
 		'../hotel/hotel.scss',
 		'../tour-feature-list/tour-feature-list.scss',
 		'../tour-feature/tour-feature.scss',
-		'../photos/photos.scss'
+		'../photos/photos.scss',
+		'../toolbar/toolbar.scss'
 	]
 })
 export class TourListComponent implements OnInit {
@@ -106,10 +107,63 @@ export class TourListComponent implements OnInit {
 	public getOrderedCountTickets(tour: Tour): number {
 		return this._tourManager.getOrderedCountTickets(tour);
 	}
+	public getCostRangeForTour(tour: Tour): string {
+		return this._tourManager.getCostRangeForTour(tour);
+	}
 
 	public setToursFromUser(user: any): void{
 		this.userTours = this._tourManager.getToursFromUser(user);
 	}
+
+
+	public toggleToolbarBtns(event): void {
+		let btns = document.querySelectorAll('.toolbar-btn--sort');
+		for (let i = 0; i < btns.length; i++){
+			btns[i].classList.remove('toolbar-btn--active');
+			if (event.currentTarget == btns[i]) {
+				btns[i].classList.add('toolbar-btn--active');
+			}
+		}
+	}
+	public sortToursByNameIncrease(event): void {
+		this.toggleToolbarBtns(event);
+		let that = this;
+		this._tourList.sort(function(a, b){
+			if (a.name > b.name) {
+				return 1;
+			} else {
+				return -1;
+			}
+		});
+	}
+	public sortToursByNameDecrease(event): void {
+		this.toggleToolbarBtns(event);
+		let that = this;
+		this._tourList.sort(function(a, b){
+			if (a.name < b.name) {
+				return 1;
+			} else {
+				return -1;
+			}
+		});
+	}
+	public sortToursByCostIncrease(event): void {
+		this.toggleToolbarBtns(event);
+		let that = this;
+		this._tourList.sort(function(a, b){
+			return that._tourManager.getMaxCostForTour(b) -
+				that._tourManager.getMaxCostForTour(a);
+		});
+	}
+	public sortToursByCostDecrease(event): void {
+		this.toggleToolbarBtns(event);
+		let that = this;
+		this._tourList.sort(function(a, b){
+			return that._tourManager.getMinCostForTour(a) -
+				that._tourManager.getMinCostForTour(b);
+		});
+	}
+
 	
 	public onDestinationClicked(event): void {
 		event.currentTarget.classList.toggle('destination--open');
