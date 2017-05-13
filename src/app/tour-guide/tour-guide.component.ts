@@ -7,6 +7,7 @@ import { TourBookService } from "app/_services/tour-book/tour-book.service";
 import { Hotel } from "app/hotel";
 import { Destination } from "app/destination";
 import { MapPoint } from "app/map-point";
+import { TourManagerService } from "app/_services/tour-manager/tour-manager.service";
 
 @Component({
 	selector: 'app-tour-guide',
@@ -21,6 +22,8 @@ import { MapPoint } from "app/map-point";
 		'../ticket-list/ticket-list.scss',
 		'../ticket/ticket.scss',
 		'../hotel/hotel.scss',
+		'../tour-feature-list/tour-feature-list.scss',
+		'../tour-feature/tour-feature.scss'
 	]
 })
 export class TourGuideComponent implements OnInit {
@@ -39,6 +42,7 @@ export class TourGuideComponent implements OnInit {
 	public newDestination: Destination;
 
 	constructor(
+		private _tourManager: TourManagerService,
 		private _guideAutorization: TourGuideAutorizationService,
 		private _tourBook: TourBookService,
 		private router: Router,
@@ -134,6 +138,9 @@ export class TourGuideComponent implements OnInit {
 		} else {
 			return false;
 		}
+	}
+	public get ticketCountForTour(): number {
+		return this._tourManager.getTicketCountForTour(this._guideTour);
 	}
 
 

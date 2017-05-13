@@ -9,20 +9,79 @@
 	</div>
 	<div class="tour_guide-tour" *ngIf="isGuideEntered">
 		<div class="tour">
+			<div class="tour-tour_feature_list">
+				<div class="tour_feature_list">
+					<div class="tour_feature_list-tour_feature">
+						<div class="tour_feature">
+							<img src="{{tour.type.imgUrl}}" alt="" class="tour_feature-img">
+							<h4 class="tour_feature-name">
+								Tour type
+							</h4>
+							<h3 class="tour_feature-value">
+								{{tour.type.value}}
+							</h3>
+						</div>
+					</div><!--
+					--><div class="tour_feature_list-tour_feature">
+						<div class="tour_feature">
+							<img src="{{tour.transportation.imgUrl}}" alt="" class="tour_feature-img">
+							<h4 class="tour_feature-name">
+								Transportation
+							</h4>
+							<h3 class="tour_feature-value">
+								{{tour.transportation.value}}
+							</h3>
+						</div>
+					</div><!--
+					--><div class="tour_feature_list-tour_feature">
+						<div class="tour_feature">
+							<img src="assets/tour/travel.svg" alt="" class="tour_feature-img">
+							<h4 class="tour_feature-name">
+								Departure city
+							</h4>
+							<h3 class="tour_feature-value">
+								{{tour.departureCity}}
+							</h3>
+						</div>
+					</div><!--
+					--><div class="tour_feature_list-tour_feature">
+						<div class="tour_feature">
+							<img src="assets/tour/time.svg" alt="" class="tour_feature-img">
+							<h4 class="tour_feature-name">
+								Duration
+							</h4>
+							<h3 class="tour_feature-value">
+								{{tour.days}} days / {{tour.nights}} nights
+							</h3>
+						</div>
+					</div><!--
+					--><div class="tour_feature_list-tour_feature">
+						<div class="tour_feature">
+							<img src="assets/tour/waiting-room.svg" alt="" class="tour_feature-img">
+							<h4 class="tour_feature-name">
+								Group Size
+							</h4>
+							<h3 class="tour_feature-value">
+								{{ticketCountForTour}}
+							</h3>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="tour-info">
-				<h2 class="tour-name">
-					{{tour.name}}
-				</h2>
-				<h3 class="tour-type">
-					{{tour.type.value}}
-				</h3>
-				<h3 class="tour-direction">
-					/ {{tour.transportation.value}}
-				</h3>
 				<img src="{{tour.mainImgUrl}}" alt="" class="tour-img">
-				<div class="tour-description">
+				<h3 class="tour-title">
+					{{tour.name}} overview:
+				</h3>
+				<p class="tour-description">
 					{{tour.description}}
-				</div> 
+				</p>
+				<div class="tour-tour_details">
+					<app-tour-detail-list 
+						[tourName]="tour.name"
+						[detailList]="tour.details">
+					</app-tour-detail-list>
+				</div>
 				<div class="tour-tour_map">
 					<app-tour-map [destinations]="tour.destinations"></app-tour-map>
 				</div>
