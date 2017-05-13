@@ -13,6 +13,7 @@
     }
 
     &-select{
+        margin-bottom: 20px;
         display: block;
 
         box-sizing: border-box;
@@ -28,11 +29,25 @@
         font-size: 18px;
 
         transition: 0.2s;
-        &:not(:last-child){
-            margin-bottom: 20px;
-        }
+        
         &:focus{
             font-size: 20px;
+        }
+
+        &--cost{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+
+            border-bottom: none;
+
+        }
+        &--cost_min,
+        &--cost_max{
+            margin-bottom: 0;
+            width: 100px;
         }
     }
     &-select_cost{
@@ -40,6 +55,13 @@
     }
     &-menu{
         margin-bottom: 20px;
+    }
+    &-action{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
     }
     &-btn{
         display: inline-block;

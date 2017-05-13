@@ -42,6 +42,7 @@ export class TourListComponent implements OnInit {
 
 	public searchedTourList: Tour[] = [];
 	public searchTourName: string = '';
+	public searchTourCost: {min: number, max: number};
 	public searchTourTransportation: any[] = [];
 	public searchTourType: any[] = [];
 
@@ -58,6 +59,10 @@ export class TourListComponent implements OnInit {
 		this.searchTourType = getAllTourType();
 		for (let i = 0; i < this.searchTourType.length; i++){
 			this.searchTourType[i].selected = false;
+		}
+		this.searchTourCost = {
+			min: null,
+			max: null
 		}
 	}
 
@@ -192,6 +197,17 @@ export class TourListComponent implements OnInit {
 		} else {
 			this.searchedTourList = this._tourList;
 		}
+	
+		if (this.searchTourCost.min) {
+			this.searchedTourList = this.searchedTourList.filter(
+				t => (this._tourManager.getMinCostForTour(t) >= this.searchTourCost.min)
+			);
+		}
+		if (this.searchTourCost.max) {
+			this.searchedTourList = this.searchedTourList.filter(
+				t => (this._tourManager.getMaxCostForTour(t) <= this.searchTourCost.max)
+			);
+		}
 
 		let isTransportationSelected = false;
 		for (let i = 0; i < this.searchTourTransportation.length; i++){
@@ -224,6 +240,18 @@ export class TourListComponent implements OnInit {
 				}
 			}
 		}
+	}
+	public resetSearchTuning(): void {
+		this.searchTourName = '';
+		this.searchTourCost.min = null;
+		this.searchTourCost.max = null;
+		for (let i = 0; i < this.searchTourTransportation.length; i++){
+			this.searchTourTransportation[i].selected = false;
+		}
+		for (let i = 0; i < this.searchTourType.length; i++){
+			this.searchTourType[i].selected = false;
+		}
+		this.searchTours();
 	}
 	
 	public onTransportationMenuClicked(): void {

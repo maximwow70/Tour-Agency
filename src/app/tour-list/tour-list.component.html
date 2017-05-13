@@ -26,6 +26,17 @@
 						Search Tours
 					</div>
 					<input [(ngModel)]="searchTourName" type="text" class="toolbar-select" placeholder="name">
+					<div class="toolbar-select toolbar-select--cost">
+						<input
+							[(ngModel)]="searchTourCost.min"
+							min="0" type="number" placeholder="min"
+							class="toolbar-select toolbar-select--cost_min">
+						<span>-</span>
+						<input
+						[(ngModel)]="searchTourCost.max"
+						min="0" type="number" placeholder="max"
+						class="toolbar-select toolbar-select--cost_max">
+					</div>
 					<div class="toolbar-menu">
 						<div class="menu menu--type">
 							<h3 class="menu-title" (click)="onTypeMenuClicked()">
@@ -48,7 +59,10 @@
 							</div>
 						</div>
 					</div>
-					<button class="toolbar-btn" (click)="searchTours()">Search</button>
+					<div class="toolbar-action">
+						<button class="toolbar-btn" (click)="searchTours()">Search</button>
+						<button class="toolbar-btn" (click)="resetSearchTuning()">Reset</button>
+					</div>
 				</div>
 			</div><!--
 			--><div class="tour_list-tours">
