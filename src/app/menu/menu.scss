@@ -29,15 +29,22 @@
 
         margin-top: 10px;
         margin-left: 10px;
+
+        font-size: 18px;
     }
 
     &-select{
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
+        margin-right: 10px;
+
+        vertical-align: middle;
 
         cursor: pointer;
+    }
+    &-checkbox{
+        margin-right: 10px; 
+
+        display: inline-block;
+        vertical-align: middle;
     }
 
     &--active{

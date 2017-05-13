@@ -1,0 +1,44 @@
+.checkbox{
+    &-value{
+        display: none;
+
+        &:checked{
+            & + .checkbox-btn{
+                opacity: 0.8;
+                .checkbox-status{
+                    opacity: 1;
+                }
+            }
+        }
+        
+    }
+    &-btn{
+        position: relative;
+
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: #C29D73;
+        border-radius: 50%;
+
+        color: #3A4457;
+        font-size: 14px;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+    &-status{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        opacity: 0;
+
+        transition: 0.3s;
+    }
+}

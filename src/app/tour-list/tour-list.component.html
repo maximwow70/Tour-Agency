@@ -6,6 +6,7 @@
 			</div>
 			<div class="tour_list-toolbar tour_list-toolbar--horizontal">
 				<div class="toolbar toolbar--horizontal">
+					<h3 class="toolbar-title">Sort by:</h3>
 					<button class="toolbar-btn toolbar-btn--sort" (click)="sortToursByNameIncrease($event)">
 						name <span class="fa fa-arrow-up"></span>
 					</button>
@@ -44,7 +45,15 @@
 								<span class="menu-btn fa fa-chevron-down"></span>
 							</h3>
 							<div class="menu-list" *ngFor="let type of searchTourType; let i = index">
-								{{type.value}} <input class="menu-select" [(ngModel)]="type.selected" type="checkbox">
+								<div class="menu-checkbox">
+									<div class="checkbox">
+										<input id="tour_type_{{i}}" class="checkbox-value" [(ngModel)]="type.selected" type="checkbox">
+										<label for="tour_type_{{i}}" class="checkbox-btn">
+											<span class="checkbox-status fa fa-check"></span>
+										</label>
+									</div>
+								</div>
+								<label for="tour_type_{{i}}">{{type.value}}</label>
 							</div>
 						</div>
 					</div>
@@ -55,7 +64,15 @@
 								<span class="menu-btn fa fa-chevron-down"></span>
 							</h3>
 							<div class="menu-list" *ngFor="let type of searchTourTransportation; let i = index">
-								{{type.value}} <input class="menu-select" [(ngModel)]="type.selected" type="checkbox">
+								<div class="menu-checkbox">
+									<div class="checkbox">
+										<input id="tour_transportation_{{i}}" class="checkbox-value" [(ngModel)]="type.selected" type="checkbox">
+										<label for="tour_transportation_{{i}}" class="checkbox-btn">
+											<span class="checkbox-status fa fa-check"></span>
+										</label>
+									</div>
+								</div>
+								<label for="tour_transportation_{{i}}">{{type.value}}</label>
 							</div>
 						</div>
 					</div>

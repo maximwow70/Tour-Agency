@@ -28,7 +28,8 @@ import { getAllTourType } from "app/tour-type";
 		'../tour-feature/tour-feature.scss',
 		'../photos/photos.scss',
 		'../toolbar/toolbar.scss',
-		'../menu/menu.scss'
+		'../menu/menu.scss',
+		'../checkbox/checkbox.scss'
 	]
 })
 export class TourListComponent implements OnInit {
