@@ -1,0 +1,49 @@
+.menu{
+    max-height: 24px;
+    overflow: hidden;
+
+
+    transition: 0.3s;
+    &-title{
+        position: relative;
+
+        width: 100%;
+        box-sizing: border-box;
+
+        line-height: 24px;
+        font-size: 20px;
+        font-weight: normal;
+
+        cursor: pointer;
+    }
+    &-btn{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+
+        transition: 0.3s;
+    }
+    &-list{
+        position: relative;
+
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+
+    &-select{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+
+        cursor: pointer;
+    }
+
+    &--active{
+        max-height: 400px;
+        .menu-btn{
+            transform: translateY(-50%) rotate(180deg);
+        }
+    }
+}

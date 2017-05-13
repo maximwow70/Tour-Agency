@@ -8,6 +8,8 @@ import { MapPoint } from "app/map-point";
 import { Router, ActivatedRoute } from '@angular/router';
 import { TourManagerService } from "app/_services/tour-manager/tour-manager.service";
 import { TourBookService } from "app/_services/tour-book/tour-book.service";
+import { TourTransportation, getTourTransportation, getAllTourTransportation } from "app/tour-transportation";
+import { getAllTourType } from "app/tour-type";
 
 @Component({
 	selector: 'app-tour-list',
@@ -25,7 +27,8 @@ import { TourBookService } from "app/_services/tour-book/tour-book.service";
 		'../tour-feature-list/tour-feature-list.scss',
 		'../tour-feature/tour-feature.scss',
 		'../photos/photos.scss',
-		'../toolbar/toolbar.scss'
+		'../toolbar/toolbar.scss',
+		'../menu/menu.scss'
 	]
 })
 export class TourListComponent implements OnInit {
@@ -36,12 +39,27 @@ export class TourListComponent implements OnInit {
 	public userTours: Tour[];
 	public userName: string;
 
+
+	public searchedTourList: Tour[] = [];
+	public searchTourName: string = '';
+	public searchTourTransportation: any[] = [];
+	public searchTourType: any[] = [];
+
 	constructor(
 		private _tourBook: TourBookService,
 		private _tourManager: TourManagerService,
 		private _router: Router,
 		private _activatedRoute: ActivatedRoute
-	) { }
+	) {
+		this.searchTourTransportation = getAllTourTransportation();
+		for (let i = 0; i < this.searchTourTransportation.length; i++){
+			this.searchTourTransportation[i].selected = false;
+		}
+		this.searchTourType = getAllTourType();
+		for (let i = 0; i < this.searchTourType.length; i++){
+			this.searchTourType[i].selected = false;
+		}
+	}
 
 	ngOnInit() {
 
@@ -85,7 +103,10 @@ export class TourListComponent implements OnInit {
 	}
 	public getTourList(): void {
 		this._tourBook.tours.then( 
-			tourList => this._tourList = tourList 
+			tourList => this._tourList = tourList
+		);
+		this._tourBook.tours.then(
+			tourList => this.searchedTourList = tourList
 		);
 	}
 	public get tourList(): Tour[] {
@@ -100,7 +121,7 @@ export class TourListComponent implements OnInit {
 	public get userTicketsForTour(): Ticket[] {
 		return this._tourManager.getUserTicketsFromName(this.userName, this.activeTour);
 	}
-	
+
 	public getTicketCountForTour(tour: Tour): number {
 		return this._tourManager.getTicketCountForTour(tour);
 	}
@@ -127,8 +148,7 @@ export class TourListComponent implements OnInit {
 	}
 	public sortToursByNameIncrease(event): void {
 		this.toggleToolbarBtns(event);
-		let that = this;
-		this._tourList.sort(function(a, b){
+		this.searchedTourList.sort(function(a, b){
 			if (a.name > b.name) {
 				return 1;
 			} else {
@@ -138,8 +158,7 @@ export class TourListComponent implements OnInit {
 	}
 	public sortToursByNameDecrease(event): void {
 		this.toggleToolbarBtns(event);
-		let that = this;
-		this._tourList.sort(function(a, b){
+		this.searchedTourList.sort(function(a, b){
 			if (a.name < b.name) {
 				return 1;
 			} else {
@@ -150,7 +169,7 @@ export class TourListComponent implements OnInit {
 	public sortToursByCostIncrease(event): void {
 		this.toggleToolbarBtns(event);
 		let that = this;
-		this._tourList.sort(function(a, b){
+		this.searchedTourList.sort(function(a, b){
 			return that._tourManager.getMaxCostForTour(b) -
 				that._tourManager.getMaxCostForTour(a);
 		});
@@ -158,13 +177,64 @@ export class TourListComponent implements OnInit {
 	public sortToursByCostDecrease(event): void {
 		this.toggleToolbarBtns(event);
 		let that = this;
-		this._tourList.sort(function(a, b){
+		this.searchedTourList.sort(function(a, b){
 			return that._tourManager.getMinCostForTour(a) -
 				that._tourManager.getMinCostForTour(b);
 		});
 	}
-
 	
+
+	public searchTours(): void {
+		if (this.searchTourName.length > 0){
+			this.searchedTourList = this._tourList.filter(
+				t => ~t.name.toLowerCase().indexOf(this.searchTourName.toLowerCase())
+			);
+		} else {
+			this.searchedTourList = this._tourList;
+		}
+
+		let isTransportationSelected = false;
+		for (let i = 0; i < this.searchTourTransportation.length; i++){
+			if (this.searchTourTransportation[i].selected === true){
+				isTransportationSelected = true;
+			}
+		}
+		if (isTransportationSelected){
+			for (let i = 0; i < this.searchTourTransportation.length; i++){
+				if (this.searchTourTransportation[i].selected !== true){
+					this.searchedTourList = this.searchedTourList.filter(
+						t => t.transportation.value !== this.searchTourTransportation[i].value
+					);
+				}
+			}
+		}
+
+		let isTypeSelected = false;
+		for (let i = 0; i < this.searchTourType.length; i++){
+			if (this.searchTourType[i].selected === true){
+				isTypeSelected = true;
+			}
+		}
+		if (isTypeSelected) {
+			for (let i = 0; i < this.searchTourType.length; i++){
+				if (this.searchTourType[i].selected !== true){
+					this.searchedTourList = this.searchedTourList.filter(
+						t => t.type.value !== this.searchTourType[i].value
+					);
+				}
+			}
+		}
+	}
+	
+	public onTransportationMenuClicked(): void {
+		let menu = document.querySelector('.menu--transportation');
+		menu.classList.toggle('menu--active');
+	}
+	public onTypeMenuClicked(): void {
+		let menu = document.querySelector('.menu--type');
+		menu.classList.toggle('menu--active');
+	}
+
 	public onDestinationClicked(event): void {
 		event.currentTarget.classList.toggle('destination--open');
 	}

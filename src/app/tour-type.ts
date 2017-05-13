@@ -25,4 +25,10 @@
             }
         }
     }
+    export function getAllTourType(): {value: string, imgUrl: string}[] {
+        let types = [];
+        types.push(getTourType(TourType.CAMPING));
+        types.push(getTourType(TourType.WALKING));
+        return types;
+    }
 //}

@@ -4,7 +4,7 @@
 			<div class="tour_list-title">
 				Our Tours
 			</div>
-			<div class="tour_list-toolbar">
+			<div class="tour_list-toolbar tour_list-toolbar--horizontal">
 				<div class="toolbar toolbar--horizontal">
 					<button class="toolbar-btn toolbar-btn--sort" (click)="sortToursByNameIncrease($event)">
 						name <span class="fa fa-arrow-up"></span>
@@ -20,19 +20,53 @@
 					</button>
 				</div>
 			</div>
-			<div class="tour_list-tour_card" *ngFor="let tour of tourList">
-				<div class="tour_card">
-					<img class="tour_card-img" src="{{tour.mainImgUrl}}" alt="">
-					<h2 class="tour_card-name">
-						{{tour.name}}
-					</h2>
-					<h3 class="tour_card-type">
-						{{tour.type.value}}
-					</h3>
-					<p class="tour_card-direction">
-						{{getCostRangeForTour(tour)}}
-					</p>
-					<button class="tour_card-btn" (click)="viewTour(tour)">View Details</button>
+			<div class="tour_list-toolbar tour_list-toolbar--vertical">
+				<div class="toolbar toolbar--vertical">
+					<div class="toolbar-title">
+						Search Tours
+					</div>
+					<input [(ngModel)]="searchTourName" type="text" class="toolbar-select" placeholder="name">
+					<div class="toolbar-menu">
+						<div class="menu menu--type">
+							<h3 class="menu-title" (click)="onTypeMenuClicked()">
+								Type
+								<span class="menu-btn fa fa-chevron-down"></span>
+							</h3>
+							<div class="menu-list" *ngFor="let type of searchTourType; let i = index">
+								{{type.value}} <input class="menu-select" [(ngModel)]="type.selected" type="checkbox">
+							</div>
+						</div>
+					</div>
+					<div class="toolbar-menu">
+						<div class="menu menu--transportation">
+							<h3 class="menu-title" (click)="onTransportationMenuClicked()">
+								Transportation
+								<span class="menu-btn fa fa-chevron-down"></span>
+							</h3>
+							<div class="menu-list" *ngFor="let type of searchTourTransportation; let i = index">
+								{{type.value}} <input class="menu-select" [(ngModel)]="type.selected" type="checkbox">
+							</div>
+						</div>
+					</div>
+					<button class="toolbar-btn" (click)="searchTours()">Search</button>
+				</div>
+			</div><!--
+			--><div class="tour_list-tours">
+				<div class="tour_list-tour_card" *ngFor="let tour of searchedTourList">
+					<div class="tour_card">
+						<img class="tour_card-img" src="{{tour.mainImgUrl}}" alt="">
+						<h2 class="tour_card-name">
+							{{tour.name}}
+						</h2>
+						<h3 class="tour_card-type">
+							{{tour.type.value}}
+							(<span class="tour_card-transportation">{{tour.transportation.value}}</span>)
+						</h3>
+						<p class="tour_card-direction">
+							{{getCostRangeForTour(tour)}}
+						</p>
+						<button class="tour_card-btn" (click)="viewTour(tour)">View Details</button>
+					</div>
 				</div>
 			</div>
 		</div>

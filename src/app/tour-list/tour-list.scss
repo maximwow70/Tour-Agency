@@ -1,5 +1,5 @@
 .tour_list-container{
-    padding: 50px 0px;
+    padding: 50px 5% 50px 5%;
     //background-color: rgba(#C29D73, 0.6);
     &-tour{
         .tour{
@@ -11,6 +11,7 @@
 }
 .tour_list{
     text-align: center;
+
     &-title{
         margin-bottom: 30px;
 
@@ -30,17 +31,36 @@
             margin-bottom: 20px;
         }
     }
-    &-toolbar{
-        margin: 0 auto;
-        margin-bottom: 30px;
-
-        max-width: 600px;
-        padding: 0 100px;
-    }
-    &-tour_card{
-        margin: 0 20px 40px 20px;
+    
+     // vertical toolbar and tour cards need to have the same width
+    &-tours{
         display: inline-block;
         vertical-align: top;
+
+        box-sizing: border-box;
+        width: 75%;
+    }
+    &-toolbar{
+        &--horizontal{
+            margin-bottom: 20px;
+        }
+        &--vertical{
+            display: inline-block;
+            vertical-align: top;
+
+            box-sizing: border-box;
+            width: 25%;
+            min-height: 100%;
+        }
+    }
+    &-tour_card{
+        margin: 0 0px 40px 0px;
+        float: left;
+
+        width: 33.3333%;
+        
+        text-align: right;
+
     }
 
     &--user{
@@ -96,6 +116,59 @@
         }
         .tour_list-tickets{
             text-align: left;
+        }
+    }
+
+    
+    @media screen and (max-width: 1400px){
+        &-toolbar--vertical{
+            width: 25%;
+        }
+        &-tours{
+            width: 75%;
+        }
+        &-tour_card{
+            width: 33.3333%;
+        }
+    }
+    
+    @media screen and (max-width: 1200px){
+        &-toolbar--vertical{
+            width: 33.3333%;
+        }
+        &-tours{
+            width: 66.6666%;
+        }
+        &-tour_card{
+            width: 50%;
+        }
+    }
+    @media screen and (max-width: 900px){
+        &-toolbar--vertical{
+            margin-bottom: 20px;
+
+            width: 100%;
+        }
+        &-tours{
+            width: 100%;
+        }
+        &-tour_card{
+            width: 50%;
+
+            text-align: center;
+        }
+    }
+    @media screen and (max-width: 900px){
+        &-toolbar--vertical{
+            width: 100%;
+        }
+        &-tours{
+            width: 100%;
+        }
+        &-tour_card{
+            width: 100%;
+
+            text-align: center;
         }
     }
 }

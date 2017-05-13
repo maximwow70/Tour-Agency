@@ -59,3 +59,28 @@ export function getTourTransportation(transportation: TourTransportation): { val
         }
     }
 }
+export function getAllTourTransportation(): { value: string, imgUrl: string }[] {
+    let transportations = [];
+    transportations.push(
+        getTourTransportation(TourTransportation.BUS)
+    );
+    transportations.push(
+        getTourTransportation(TourTransportation.TRAIN)
+    );
+    transportations.push(
+        getTourTransportation(TourTransportation.PLANE)
+    );
+    transportations.push(
+        getTourTransportation(TourTransportation.CAR)
+    );
+    transportations.push(
+        getTourTransportation(TourTransportation.FOOT)
+    );
+    transportations.push(
+        getTourTransportation(TourTransportation.CYCLE)
+    );
+    transportations.push(
+        getTourTransportation(TourTransportation.SHIP)
+    );
+    return transportations;
+}
